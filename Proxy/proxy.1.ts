@@ -3,12 +3,12 @@
 
 namespace ProxyPattern.Impl1 {
 
-    export abstract class Subject {
+    abstract class Subject {
         abstract get name(): string
         abstract request()
     }
 
-    export class ConcreteSubject extends Subject {
+    class ConcreteSubject extends Subject {
         private _name: string
 
         constructor(name: string) {
@@ -25,7 +25,7 @@ namespace ProxyPattern.Impl1 {
         }
     }
 
-    export class Proxy extends Subject {
+    class Proxy extends Subject {
         private _realSubject: Subject
         private _name: string
 
