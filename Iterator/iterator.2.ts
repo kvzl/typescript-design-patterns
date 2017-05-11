@@ -22,10 +22,10 @@ namespace IteratorPattern.Impl2 {
        }
 
        [Symbol.iterator]() {
-           if (this.head !== undefined) {
+           if (this.head != undefined) {
                return (function* iter(head) {
                    let current: Node<T> | undefined = head
-                   while (current !== undefined) {
+                   while (current != undefined) {
                        yield current.data
                        current = current.next
                    }
@@ -36,7 +36,7 @@ namespace IteratorPattern.Impl2 {
        }
 
        append(data: T) {
-           if (this.tail !== undefined) {
+           if (this.tail != undefined) {
                this.tail = this.tail.next = { data }
            }
            else {
@@ -46,13 +46,16 @@ namespace IteratorPattern.Impl2 {
     }
 
     export function demo() {
-        const list = new LinkedList<string>([ 'react', 'vue', 'angular' ])
+        const list = new LinkedList([ 'react', 'vue', 'angular' ])
         list.append('riot')
         list.append('meteor')
 
         for (let framework of list) {
             console.log(framework)
         }
+
+        console.log('==========')
+        console.log([...list].join(', '))
     }
 }
 

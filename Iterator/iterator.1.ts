@@ -1,7 +1,7 @@
 
 namespace IteratorPattern.Impl1 {
     interface Iterator<T> {
-        next(): T | null
+        next(): T | undefined
         hasNext(): boolean
     }
 
@@ -10,23 +10,19 @@ namespace IteratorPattern.Impl1 {
     }
 
     class LinkedListIterator<T> implements Iterator<T> {
-        current?: Node<T>
-
-        constructor(list: LinkedList<T>) {
-            this.current = list.head
-        }
+        constructor(private current?: Node<T>) {}
 
         hasNext(): boolean {
-            return (this.current !== undefined)
+            return (this.current != undefined)
         }
 
-        next(): T | null {
+        next(): T | undefined {
             if (this.hasNext()) {
                 const { data, next } = this.current as Node<T>
                 this.current = next
                 return data
             }
-            return null
+            return undefined
         }
     }
 
@@ -50,11 +46,11 @@ namespace IteratorPattern.Impl1 {
         }
 
         iterator(): Iterator<T> {
-            return new LinkedListIterator<T>(this)
+            return new LinkedListIterator<T>(this.head)
         }
 
         append(data: T) {
-            if (this.tail !== undefined) {
+            if (this.tail != undefined) {
                 this.tail = this.tail.next = { data }
             }
             else {
@@ -64,7 +60,7 @@ namespace IteratorPattern.Impl1 {
     }
 
     export function demo() {
-        const list = new LinkedList<string>(['react', 'vue', 'angular'])
+        const list = new LinkedList(['react', 'vue', 'angular'])
         list.append('riot')
         list.append('meteor')
 

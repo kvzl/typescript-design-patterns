@@ -26,7 +26,7 @@ namespace ProxyPattern.Impl1 {
     }
 
     class Proxy extends Subject {
-        private _realSubject: Subject
+        private realSubject: Subject
         private _name: string
 
         constructor(name: string) {
@@ -39,18 +39,18 @@ namespace ProxyPattern.Impl1 {
         }
 
         request() {
-            if (this._realSubject === null || this._realSubject === undefined) {
+            if (this.realSubject === null || this.realSubject === undefined) {
                 this.loadRealSubject()
             }
 
-            this._realSubject.request()
+            this.realSubject.request()
         }
 
         loadRealSubject() {
             console.log("do some heavy things")
 
             // NOTE: create on demand
-            this._realSubject = new ConcreteSubject(this._name)
+            this.realSubject = new ConcreteSubject(this._name)
         }
     }
 
