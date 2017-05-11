@@ -1,3 +1,4 @@
+// ref: https://basarat.gitbooks.io/typescript/docs/iterators.html
 
 namespace IteratorPattern.Impl3 {
     class Component {
