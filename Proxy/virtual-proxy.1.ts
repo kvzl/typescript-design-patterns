@@ -1,7 +1,7 @@
 // translated from c#
 // ref: http://www.cnblogs.com/gaochundong/p/design_pattern_proxy.html
 
-namespace ProxyPattern.Impl1 {
+namespace ProxyPattern.VirtualProxy.Impl1 {
 
     abstract class Subject {
         abstract get name(): string
@@ -39,7 +39,7 @@ namespace ProxyPattern.Impl1 {
         }
 
         request() {
-            if (this.realSubject === null || this.realSubject === undefined) {
+            if (this.realSubject == undefined) {
                 this.loadRealSubject()
             }
 
@@ -68,4 +68,4 @@ namespace ProxyPattern.Impl1 {
 }
 
 
-ProxyPattern.Impl1.demo()
+ProxyPattern.VirtualProxy.Impl1.demo()
